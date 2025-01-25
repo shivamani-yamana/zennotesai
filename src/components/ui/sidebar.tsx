@@ -5,6 +5,10 @@ import Link, { LinkProps } from "next/link";
 import React, { useState, createContext, useContext } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { IconMenu2, IconX } from "@tabler/icons-react";
+import { useDocumentData } from "react-firebase-hooks/firestore";
+import { doc } from "firebase/firestore";
+import { usePathname } from "next/navigation";
+import { db } from "../../../firebase";
 
 interface Links {
   label: string;
@@ -166,11 +170,20 @@ export const SidebarLink = ({
   props?: LinkProps;
 }) => {
   const { open, animate } = useSidebar();
+
+  const [data, ,] = useDocumentData(doc(db, "documents", link.label));
+  const pathname = usePathname();
+  const isActive = link.href.includes(pathname) && pathname !== "/";
+
+  if (!data) return null;
+
   return (
     <Link
       href={link.href}
       className={cn(
-        "flex items-center justify-start gap-2  group/sidebar py-2",
+        `flex items-center ${
+          isActive ? "dark:bg-neutral-700 bg-neutral-200" : ""
+        } justify-start gap-1  group/sidebar px-2 py-1 hover:dark:bg-neutral-700 hover:bg-neutral-200 rounded-md duration-500 transition-all ease-in-out cursor-pointer`,
         className
       )}
       {...props}
@@ -182,9 +195,9 @@ export const SidebarLink = ({
           display: animate ? (open ? "inline-block" : "none") : "inline-block",
           opacity: animate ? (open ? 1 : 0) : 1,
         }}
-        className="text-neutral-700 dark:text-neutral-200 text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0"
+        className="text-neutral-700 dark:text-neutral-200 text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0 truncate"
       >
-        {link.label}
+        {data.title}
       </motion.span>
     </Link>
   );

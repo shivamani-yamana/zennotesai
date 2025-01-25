@@ -9,10 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@blocknote/core": "^0.23.0",
+    "@blocknote/mantine": "^0.23.0",
+    "@blocknote/react": "^0.23.0",
+    "@blocknote/shadcn": "^0.23.0",
     "@clerk/nextjs": "^6.10.2",
+    "@liveblocks/client": "^2.16.1",
+    "@liveblocks/node": "^2.16.1",
+    "@liveblocks/react": "^2.16.1",
+    "@liveblocks/yjs": "^2.16.1",
     "@tabler/icons-react": "^3.29.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "emoji-picker-react": "^4.12.0",
     "firebase": "^11.2.0",
     "firebase-admin": "^13.0.2",
     "framer-motion": "^12.0.5",
@@ -21,8 +30,10 @@
     "next": "14.2.23",
     "react": "^18",
     "react-dom": "^18",
+    "react-firebase-hooks": "^5.1.1",
     "tailwind-merge": "^2.6.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "yjs": "^13.6.23"
   },
   "devDependencies": {
     "@types/node": "^20",
