@@ -1,35 +1,21 @@
 "use client";
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  UserButton,
-  useUser,
-} from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import React, { useState } from "react";
 // import Breadcrumbs from "./Breadcrumbs";
 import { Moon, Sun } from "lucide-react";
+import Breadcrumbs from "./Breadcrumbs";
 
 const Header = () => {
-  const { user } = useUser();
   const [darkMode, setDarkMode] = useState(false);
   return (
     <div className="flex w-full items-center justify-between p-2 px-10 border-b-[1px] border-purple-700">
-      {user && (
-        <h1 className="text-xl font-bold text-gray-800 dark:text-gray-100">
-          <Link href="/">
-            {user.firstName}
-            {`'s Notes`}
-          </Link>
-        </h1>
-      )}
-      {!user && (
-        <h1 className="text-xl font-bold text-gray-800 dark:text-gray-100">
-          <Link href="/">ZenNotes AI</Link>
-        </h1>
-      )}
+      <h1 className="text-xl font-bold text-gray-800 dark:text-gray-100">
+        <Link href="/">ZenNotes AI</Link>
+      </h1>
+
       {/* BreadCrumbs */}
+      <Breadcrumbs />
       {/* <Breadcrumbs /> */}
 
       <div className="flex gap-4 items-center justify-center">

@@ -65,7 +65,7 @@ export function Drawer({ children }: { children: React.ReactNode }) {
   return (
     <div
       className={cn(
-        "rounded-md flex flex-col md:flex-row bg-gray-100 dark:bg-slate-800 w-full flex-1 border border-slate-200 dark:border-slate-700 overflow-hidden",
+        "rounded-md flex flex-col md:flex-row bg-gray-100 dark:bg-slate-800 w-full flex-1 border border-slate-200 dark:border-slate-700",
         "h-screen"
       )}
     >
@@ -147,7 +147,7 @@ export function Drawer({ children }: { children: React.ReactNode }) {
           </div>
         </SidebarBody>
       </Sidebar>
-      <div className="w-full pt-4 bg-white">{children}</div>
+      <div className="w-full pt-4 bg-slate-50">{children}</div>
     </div>
   );
 }

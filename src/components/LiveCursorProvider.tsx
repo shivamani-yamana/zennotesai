@@ -8,8 +8,8 @@ function LiveCursorProvider({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [myPresence, updateMyPresence] = useMyPresence();
-  console.log(myPresence);
+  const [, updateMyPresence] = useMyPresence();
+
   const others = useOthers();
 
   return (

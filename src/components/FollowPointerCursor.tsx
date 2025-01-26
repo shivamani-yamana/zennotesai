@@ -17,7 +17,6 @@ function FollowPointerCursor({
     avatar: string;
   };
 }) {
-  console.log(x, ",", y);
   return (
     <FollowPointer
       title={<TitleComponent title={info.name} avatar={info.avatar} />}

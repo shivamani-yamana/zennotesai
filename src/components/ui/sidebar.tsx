@@ -173,7 +173,10 @@ export const SidebarLink = ({
 
   const [data, ,] = useDocumentData(doc(db, "documents", link.label));
   const pathname = usePathname();
-  const isActive = link.href.includes(pathname) && pathname !== "/";
+  const isActive =
+    link.href.includes(pathname) &&
+    pathname !== "/" &&
+    pathname !== "/dashboard";
 
   if (!data) return null;
 

@@ -12,7 +12,7 @@ import {
   StyleSchema,
 } from "@blocknote/core";
 import { useCreateBlockNote } from "@blocknote/react";
-import { BlockNoteView } from "@blocknote/mantine";
+import { BlockNoteView } from "@blocknote/shadcn";
 import "@blocknote/shadcn/style.css";
 import stringToColor from "../lib/stringToColor";
 
@@ -38,7 +38,7 @@ function Editor() {
   }
 
   return (
-    <div className="max-w-6xl w-full h-full flex-1 max-h-screen bg-white">
+    <div className="max-w-6xl w-full h-full flex-1 max-h-screen">
       <div>
         {/* Chat to AI */}
         {/* Translate Document */}

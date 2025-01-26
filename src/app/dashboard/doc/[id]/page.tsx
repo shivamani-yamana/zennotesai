@@ -15,7 +15,7 @@ const DocumentPage = ({ params }: { params: { id: string } }) => {
   }
 
   return (
-    <div className="w-full h-full flex-1 flex bg-white">
+    <div className="w-full h-full flex-1 flex">
       <Document id={id} />
     </div>
   );
