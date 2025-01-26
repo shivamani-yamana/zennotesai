@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import React from "react";
+import { Toaster } from "../components/ui/toast";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,7 +18,10 @@ export default function RootLayout({
     // ClerkProvider is a wrapper that provides Clerk's authentication and session management
     <ClerkProvider>
       <html lang="en">
-        <body className="">{children}</body>
+        <body className="">
+          {children}
+          <Toaster />
+        </body>
       </html>
     </ClerkProvider>
   );

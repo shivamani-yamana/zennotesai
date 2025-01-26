@@ -1,6 +1,6 @@
 "use client";
 
-import DocumentUpdate from "./DocumentUpdate";
+import DocumentTopbar from "./DocumentTopbar";
 import { Editor } from "./DynamicEditor";
 
 function Document({ id }: { id: string }) {
@@ -14,7 +14,7 @@ function Document({ id }: { id: string }) {
   dark:[&::-webkit-scrollbar-track]:bg-slate-700
   dark:[&::-webkit-scrollbar-thumb]:bg-slate-500"
     >
-      <DocumentUpdate id={id} />
+      <DocumentTopbar id={id} />
       {/* If owner Invite Collaborators and delete */}
       <hr className="w-full h-px my-4 bg-slate-300 border-0 dark:bg-slate-700"></hr>
 

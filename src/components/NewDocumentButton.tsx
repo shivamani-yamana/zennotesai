@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import SpinnerComp from "./ui/SpinnerComp";
 import { createNewDocument } from "../../actions/actions";
 import React from "react";
+import { toast } from "sonner";
 
 const NewDocumentButton = () => {
   const [isPending, startTransition] = useTransition();
@@ -14,6 +15,7 @@ const NewDocumentButton = () => {
     startTransition(async () => {
       const docId = await createNewDocument();
       router.push(`/dashboard/doc/${docId}`);
+      toast.success("Document created successfully");
     });
   };
 

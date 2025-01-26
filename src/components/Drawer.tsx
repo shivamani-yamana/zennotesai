@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Sidebar, SidebarBody, SidebarLink } from "./ui/sidebar";
-import { Plus } from "lucide-react";
+import { Folder, Plus } from "lucide-react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import NewDocumentButton from "./NewDocumentButton";
 import { useUser } from "@clerk/nextjs";
@@ -82,39 +82,44 @@ export function Drawer({ children }: { children: React.ReactNode }) {
               ) : (
                 <>
                   {/* My Documents Section */}
-                  <div>
-                    {groupedData.owner.length === 0 ? (
-                      <h4 className="w-full hover:dark:bg-neutral-700 hover:bg-neutral-200 text-xs px-2 py-1 my-3 rounded-md duration-500 transition-all ease-in-out cursor-pointer">
-                        No Documents found!
-                      </h4>
-                    ) : (
-                      <div>
-                        <h4 className="w-full hover:dark:bg-neutral-700 hover:bg-neutral-200 text-xs px-2 py-1 my-1 rounded-md duration-500 transition-all ease-in-out cursor-pointer">
-                          My Documents
+
+                  {!open ? (
+                    <Folder />
+                  ) : (
+                    <div>
+                      {groupedData.owner.length === 0 ? (
+                        <h4 className="w-full hover:dark:bg-neutral-700 hover:bg-neutral-200 text-xs px-2 py-1 my-3 rounded-md duration-500 transition-all ease-in-out cursor-pointer">
+                          {!open ? "No Documents found!" : ""}
                         </h4>
-                        <div className="flex flex-col gap-1">
-                          {groupedData.owner.map((doc) => (
-                            <div key={doc.roomId}>
-                              <SidebarLink
-                                link={{
-                                  label: doc.roomId,
-                                  href: `/dashboard/doc/${doc.roomId}`,
-                                  icon: (
-                                    <CiFileOn className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-                                  ),
-                                }}
-                              />
-                            </div>
-                          ))}
+                      ) : (
+                        <div>
+                          <h4 className="w-full hover:dark:bg-neutral-700 hover:bg-neutral-200 text-xs px-2 py-1 my-1 rounded-md duration-500 transition-all ease-in-out cursor-pointer">
+                            My Documents
+                          </h4>
+                          <div className="flex flex-col gap-1">
+                            {groupedData.owner.map((doc) => (
+                              <div key={doc.roomId}>
+                                <SidebarLink
+                                  link={{
+                                    label: doc.roomId,
+                                    href: `/dashboard/doc/${doc.roomId}`,
+                                    icon: (
+                                      <CiFileOn className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+                                    ),
+                                  }}
+                                />
+                              </div>
+                            ))}
+                          </div>
                         </div>
-                      </div>
-                    )}
-                  </div>
+                      )}
+                    </div>
+                  )}
                   {/* My Shared Section */}
                   <div>
                     {groupedData.editor.length === 0 ? (
                       <h4 className="w-full hover:dark:bg-neutral-700 hover:bg-neutral-200 text-xs px-2 py-1 my-3 rounded-md duration-500 transition-all ease-in-out cursor-pointer">
-                        No Shared Documents found!
+                        {open ? "No Documents found!" : ""}
                       </h4>
                     ) : (
                       <div>
