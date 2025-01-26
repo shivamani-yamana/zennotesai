@@ -9,16 +9,18 @@ import Breadcrumbs from "./Breadcrumbs";
 const Header = () => {
   const [darkMode, setDarkMode] = useState(false);
   return (
-    <div className="flex w-full items-center justify-between p-2 px-10 border-b-[1px] border-purple-700">
-      <h1 className="text-xl font-bold text-gray-800 dark:text-gray-100">
+    <div className="flex w-full items-center justify-between p-2 md:p-2 md:px-10 border-b-[1px] border-purple-700">
+      <h1 className="text-sm md:text-xl font-bold text-gray-800 dark:text-gray-100">
         <Link href="/">ZenNotes AI</Link>
       </h1>
 
       {/* BreadCrumbs */}
-      <Breadcrumbs />
+      <div className="flex-1 flex justify-center mx-4 md:mx-0">
+        <Breadcrumbs />
+      </div>
       {/* <Breadcrumbs /> */}
 
-      <div className="flex gap-4 items-center justify-center">
+      <div className="flex gap-2 md:gap-4 items-center justify-center">
         {/* Dark Theme and Light Theme */}
         <div className="p-[1px] relative scale-75">
           <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full" />
