@@ -6,7 +6,7 @@ function layout({ children }: { children: React.ReactNode }) {
   return (
     <div
       className="h-screen max-h-screen w-screen
-     flex flex-col"
+     flex flex-col overflow-hidden"
     >
       <Header />
       <Drawer>{children}</Drawer>

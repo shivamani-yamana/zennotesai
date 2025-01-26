@@ -1,7 +1,8 @@
 "use server";
 
-import { auth } from "@clerk/nextjs/server";
 import { adminDb } from "../firebase-admin";
+import { auth } from "@clerk/nextjs/server" // Adjust the import path as necessary
+import liveblocks from "../src/lib/liveblocks";
 
 export async function createNewDocument() {
   await auth.protect();
@@ -13,17 +14,41 @@ export async function createNewDocument() {
   const docCollectionRef = adminDb.collection("documents");
   const docRef = await docCollectionRef.add({ title: "Untitled Doc" });
 
-  // await adminDb
-  //   .collection("users")
-  //   .doc(sessionClaims?.email)
-  //   .collection("rooms")
-  //   .doc(docRef.id)
-  //   .set({
-  //     userId: sessionClaims.email,
-  //     role: "Owner",
-  //     createdAt: new Date(),
-  //     roomId: docRef.id,
-  //   });
+  await adminDb
+    .collection("users")
+    .doc(sessionClaims?.email)
+    .collection("rooms")
+    .doc(docRef.id)
+    .set({
+      userId: sessionClaims.email,
+      role: "Owner",
+      createdAt: new Date(),
+      roomId: docRef.id,
+    });
 
   return docRef.id;
+}
+
+export async function deleteDocument(id: string){
+  auth.protect();
+  try{
+    await adminDb.collection("documents").doc(id).delete();
+    const query = await adminDb.collectionGroup("rooms").where("roomId",'==',id).get();
+    const batch = adminDb.batch();
+
+    query.docs.forEach((doc)=>{
+      batch.delete(doc.ref);
+    })
+
+    await batch.commit();
+
+    // Deleting rooms in liveblocks
+    await liveblocks.deleteRoom(id);
+
+    return {success:true}
+
+  }catch(error){
+    console.log(error);
+    return {success:false}
+  }
 }
