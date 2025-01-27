@@ -29,6 +29,9 @@ export async function createNewDocument() {
   return docRef.id;
 }
 
+
+// Delete Document Action
+
 export async function deleteDocument(id: string){
   auth.protect();
   try{
@@ -45,6 +48,30 @@ export async function deleteDocument(id: string){
     // Deleting rooms in liveblocks
     await liveblocks.deleteRoom(id);
 
+    return {success:true}
+
+  }catch(error){
+    console.log(error);
+    return {success:false}
+  }
+}
+
+// Invite Document Action
+
+export async function inviteUserToDocument(roomId:string,email:string){
+  auth.protect();
+  try{
+    await adminDb
+    .collection("users")
+    .doc(email)
+    .collection("rooms")
+    .doc(roomId)
+    .set({
+      userId: email,
+      role: "editor",
+      createdAt: new Date(),
+      roomId,
+    });
     return {success:true}
 
   }catch(error){

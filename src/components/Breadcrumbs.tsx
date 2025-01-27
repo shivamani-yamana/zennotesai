@@ -12,18 +12,18 @@ import {
 
 const Breadcrumbs = () => {
   const path = usePathname();
-  const segments = path.split("/");
+  const segments = path?.split("/");
   console.log(segments);
 
   return (
     <Breadcrumb>
       <BreadcrumbList>
-        {segments[1] === "dashboard" && (
+        {segments && segments[1] === "dashboard" && (
           <BreadcrumbItem>
             <BreadcrumbLink href="/dashboard">Dashboard</BreadcrumbLink>
           </BreadcrumbItem>
         )}
-        {segments[2] === "doc" && (
+        {segments && segments[2] === "doc" && (
           <>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
