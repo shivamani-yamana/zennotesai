@@ -51,7 +51,7 @@ function DocumentTopbar({ id }: { id: string }) {
   };
 
   return (
-    <div className="w-full max-w-4xl flex space-x-6 justify-center relative">
+    <div className="w-full max-w-full sm:max-w-4xl flex space-x-6 justify-center relative">
       {/* Form for Updating Doc Name */}
       <form onSubmit={handleUpdateTitle} className="flex-1 flex space-x-6">
         <div className="flex gap-2 items-center flex-1">

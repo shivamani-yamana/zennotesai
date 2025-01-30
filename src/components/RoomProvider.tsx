@@ -14,7 +14,7 @@ function RoomProvider({
   roomId: string;
 }>) {
   return (
-    <div className="w-full h-full flex justify-center overflow-hidden">
+    <div className="w-full h-full flex justify-center overflow-hidden max-w-full">
       <RoomProviderWrapper id={roomId} initialPresence={{ cursor: null }}>
         <ClientSideSuspense fallback={<SpinnerComp twclasses="!w-12 !h-12" />}>
           <LiveCursorProvider>{children}</LiveCursorProvider>
