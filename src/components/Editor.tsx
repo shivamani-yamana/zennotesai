@@ -79,7 +79,7 @@ function BlockNote({ doc, provider }: EditorProps) {
     editable: true, // Adjust editable state if needed
   };
 
-  return <BlockNoteView {...blockNoteProps} />;
+  return <BlockNoteView {...blockNoteProps} className="flex-1" />;
 }
 
 export default Editor;

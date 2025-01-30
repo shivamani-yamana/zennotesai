@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Sidebar, SidebarBody, SidebarLink } from "./ui/sidebar";
-import { Folder, Plus } from "lucide-react";
+import { PanelRight, PanelRightOpen } from "lucide-react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import NewDocumentButton from "./NewDocumentButton";
 import { useUser } from "@clerk/nextjs";
@@ -65,8 +65,8 @@ export function Drawer({ children }: { children: React.ReactNode }) {
   return (
     <div
       className={cn(
-        "rounded-md flex flex-col md:flex-row bg-gray-100 dark:bg-slate-800 w-full flex-1 border border-slate-200 dark:border-slate-700",
-        "h-screen"
+        "rounded-md flex flex-col md:flex-row bg-gray-100 dark:bg-slate-800 flex-1 w-full border border-slate-200 dark:border-slate-700",
+        "h-full max-h-full"
       )}
     >
       <Sidebar open={open} setOpen={setOpen}>
@@ -74,78 +74,87 @@ export function Drawer({ children }: { children: React.ReactNode }) {
           <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
             <div className="my-4 flex flex-col gap-2">
               {/* New Documentation Button */}
-              {open ? <NewDocumentButton /> : <Plus />}
-
-              {/* Loading State Check */}
-              {loading ? (
-                <p>Loading...</p>
-              ) : (
+              <div onClick={() => setOpen(!open)} className="self-end">
+                {open ? <PanelRightOpen /> : <PanelRight />}
+              </div>
+              {open && (
                 <>
-                  {/* My Documents Section */}
-
-                  {!open ? (
-                    <Folder />
+                  <NewDocumentButton />
+                  {/* Loading State Check */}
+                  {loading ? (
+                    <p>Loading...</p>
                   ) : (
-                    <div>
-                      {groupedData.owner.length === 0 ? (
-                        <h4 className="w-full hover:dark:bg-neutral-700 hover:bg-neutral-200 text-xs px-2 py-1 my-3 rounded-md duration-500 transition-all ease-in-out cursor-pointer">
-                          {!open ? "No Documents found!" : ""}
-                        </h4>
-                      ) : (
-                        <div>
-                          <h4 className="w-full hover:dark:bg-neutral-700 hover:bg-neutral-200 text-xs px-2 py-1 my-1 rounded-md duration-500 transition-all ease-in-out cursor-pointer">
-                            My Documents
-                          </h4>
-                          <div className="flex flex-col gap-1">
-                            {groupedData.owner.map((doc) => (
-                              <div key={doc.roomId}>
-                                <SidebarLink
-                                  link={{
-                                    label: doc.roomId,
-                                    href: `/dashboard/doc/${doc.roomId}`,
-                                    icon: (
-                                      <CiFileOn className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-                                    ),
-                                  }}
-                                />
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                  {/* My Shared Section */}
-                  <div>
-                    {groupedData.editor.length === 0 ? (
-                      <h4 className="w-full hover:dark:bg-neutral-700 hover:bg-neutral-200 text-xs px-2 py-1 my-3 rounded-md duration-500 transition-all ease-in-out cursor-pointer">
-                        {open ? "No Documents found!" : ""}
-                      </h4>
-                    ) : (
-                      <div>
-                        <h4 className="w-full hover:dark:bg-neutral-700 hover:bg-neutral-200 text-xs px-2 py-1 my-1 rounded-md duration-500 transition-all ease-in-out cursor-pointer">
-                          Shared Documents
-                        </h4>
+                    <>
+                      {/* My Documents Section */}
 
-                        <div className="flex flex-col gap-1">
-                          {groupedData.editor.map((doc, idx) => (
-                            <div key={doc.roomId}>
-                              <SidebarLink
-                                key={idx}
-                                link={{
-                                  label: doc.roomId,
-                                  href: `/dashboard/doc/${doc.roomId}`,
-                                  icon: (
-                                    <CiFileOn className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-                                  ),
-                                }}
-                              />
+                      <div>
+                        {groupedData.owner.length === 0 ? (
+                          <h4 className="w-full hover:dark:bg-neutral-700 hover:bg-neutral-200 text-xs px-2 py-1 my-3 rounded-md duration-500 transition-all ease-in-out cursor-pointer">
+                            {!open ? "No Documents found!" : ""}
+                          </h4>
+                        ) : (
+                          <div>
+                            <h4 className="w-full hover:dark:bg-neutral-700 hover:bg-neutral-200 text-xs px-2 py-1 my-1 rounded-md duration-500 transition-all ease-in-out cursor-pointer">
+                              My Documents
+                            </h4>
+                            <div className="flex flex-col gap-1">
+                              {groupedData.owner.map((doc) => (
+                                <div
+                                  key={doc.roomId}
+                                  onClick={() => setOpen(!open)}
+                                >
+                                  <SidebarLink
+                                    link={{
+                                      label: doc.roomId,
+                                      href: `/dashboard/doc/${doc.roomId}`,
+                                      icon: (
+                                        <CiFileOn className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+                                      ),
+                                    }}
+                                  />
+                                </div>
+                              ))}
                             </div>
-                          ))}
-                        </div>
+                          </div>
+                        )}
                       </div>
-                    )}
-                  </div>
+
+                      {/* My Shared Section */}
+                      <div>
+                        {groupedData.editor.length === 0 ? (
+                          <h4 className="w-full hover:dark:bg-neutral-700 hover:bg-neutral-200 text-xs px-2 py-1 my-3 rounded-md duration-500 transition-all ease-in-out cursor-pointer">
+                            {open ? "No Documents found!" : ""}
+                          </h4>
+                        ) : (
+                          <div>
+                            <h4 className="w-full hover:dark:bg-neutral-700 hover:bg-neutral-200 text-xs px-2 py-1 my-1 rounded-md duration-500 transition-all ease-in-out cursor-pointer">
+                              Shared Documents
+                            </h4>
+
+                            <div className="flex flex-col gap-1">
+                              {groupedData.editor.map((doc, idx) => (
+                                <div
+                                  key={doc.roomId}
+                                  onClick={() => setOpen(!open)}
+                                >
+                                  <SidebarLink
+                                    key={idx}
+                                    link={{
+                                      label: doc.roomId,
+                                      href: `/dashboard/doc/${doc.roomId}`,
+                                      icon: (
+                                        <CiFileOn className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+                                      ),
+                                    }}
+                                  />
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </>
+                  )}
                 </>
               )}
             </div>
