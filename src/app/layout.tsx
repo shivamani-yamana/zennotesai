@@ -5,6 +5,7 @@ import React from "react";
 import { Toaster } from "../components/ui/toast";
 import Head from "next/head";
 import DevelopmentBanner from "@/components/DevelopmentBanner";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -27,6 +28,7 @@ export default function RootLayout({
           <DevelopmentBanner />
           {children}
           <Toaster />
+          <Analytics />
         </body>
       </html>
     </ClerkProvider>

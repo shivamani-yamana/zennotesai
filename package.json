@@ -25,6 +25,7 @@
     "@radix-ui/react-slot": "^1.1.1",
     "@studio-freight/lenis": "^1.0.42",
     "@tabler/icons-react": "^3.29.0",
+    "@vercel/analytics": "^1.4.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cobe": "^0.6.3",
