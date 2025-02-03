@@ -21,6 +21,15 @@
         "name": "next"
       }
     ],
+    "baseUrl": "src",
+    "paths": {
+      "@/components/*": [
+        "./components/*"
+      ],
+      "@/lib/*": [
+        "./lib/*"
+      ]
+    },
     "strictNullChecks": true
   },
   "include": [

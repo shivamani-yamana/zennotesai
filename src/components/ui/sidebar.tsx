@@ -4,11 +4,12 @@ import { cn } from ".././../lib/utils";
 import Link, { LinkProps } from "next/link";
 import React, { useState, createContext, useContext } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { IconMenu2, IconX } from "@tabler/icons-react";
+// import { IconMenu2 } from "@tabler/icons-react";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import { doc } from "firebase/firestore";
 import { usePathname } from "next/navigation";
 import { db } from "../../../firebase";
+import { PanelRight, PanelRightOpen } from "lucide-react";
 
 interface Links {
   label: string;
@@ -51,7 +52,7 @@ export const SidebarProvider = ({
   const setOpen = setOpenProp !== undefined ? setOpenProp : setOpenState;
 
   return (
-    <SidebarContext.Provider value={{ open, setOpen, animate: animate }}>
+    <SidebarContext.Provider value={{ open, setOpen, animate }}>
       {children}
     </SidebarContext.Provider>
   );
@@ -97,15 +98,23 @@ export const DesktopSidebar = ({
           "h-full px-4 py-4 hidden  md:flex md:flex-col bg-neutral-100 dark:bg-neutral-800 w-[300px] flex-shrink-0",
           className
         )}
-        onClick={() => {
-          setOpen(open);
-        }}
         animate={{
           width: animate ? (open ? "300px" : "60px") : "300px",
         }}
         {...props}
       >
-        {children}
+        <div>
+          <div
+            onClick={() => {
+              setOpen(!open);
+              console.log("clicked", open);
+            }}
+            className="self-end cursor-pointer"
+          >
+            {open ? <PanelRightOpen /> : <PanelRight />}
+          </div>
+          {children as React.ReactNode}
+        </div>
       </motion.div>
     </>
   );
@@ -125,11 +134,11 @@ export const MobileSidebar = ({
         )}
         {...props}
       >
-        <div className="flex justify-start z-20 w-full">
-          <IconMenu2
-            className="text-neutral-800 dark:text-neutral-200"
-            onClick={() => setOpen(!open)}
-          />
+        <div
+          className="flex justify-start z-20 w-full"
+          onClick={() => setOpen(!open)}
+        >
+          <PanelRight />
         </div>
         <AnimatePresence>
           {open && (
@@ -147,10 +156,13 @@ export const MobileSidebar = ({
               )}
             >
               <div
-                className="absolute right-10 top-10 z-50 text-neutral-800 dark:text-neutral-200"
-                onClick={() => setOpen(!open)}
+                onClick={() => {
+                  setOpen(!open);
+                  console.log("clicked", open);
+                }}
+                className="self-end cursor-pointer"
               >
-                <IconX />
+                {open ? <PanelRightOpen /> : <PanelRight />}
               </div>
               {children}
             </motion.div>
