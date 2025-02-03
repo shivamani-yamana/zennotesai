@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Sidebar, SidebarBody, SidebarLink } from "./ui/sidebar";
-import { PanelRight, PanelRightOpen } from "lucide-react";
+// import { PanelRight, PanelRightOpen } from "lucide-react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import NewDocumentButton from "./NewDocumentButton";
 import { useUser } from "@clerk/nextjs";
@@ -74,9 +74,6 @@ export function Drawer({ children }: { children: React.ReactNode }) {
           <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
             <div className="my-4 flex flex-col gap-2">
               {/* New Documentation Button */}
-              <div onClick={() => setOpen(!open)} className="self-end">
-                {open ? <PanelRightOpen /> : <PanelRight />}
-              </div>
               {open && (
                 <>
                   <NewDocumentButton />
@@ -101,7 +98,9 @@ export function Drawer({ children }: { children: React.ReactNode }) {
                               {groupedData.owner.map((doc) => (
                                 <div
                                   key={doc.roomId}
-                                  onClick={() => setOpen(!open)}
+                                  onClick={() => {
+                                    setOpen(!open);
+                                  }}
                                 >
                                   <SidebarLink
                                     link={{

@@ -17,7 +17,7 @@ export const FollowPointer = ({
   return (
     <AnimatePresence>
       <motion.div
-        className="h-4 w-4 rounded-full absolute"
+        className="absolute w-4 h-4 rounded-full"
         style={{
           top: y,
           left: x,
@@ -52,6 +52,7 @@ export const FollowPointer = ({
         <motion.div
           style={{
             backgroundColor: color,
+            animationDuration: "2s",
           }}
           initial={{
             scale: 0.5,

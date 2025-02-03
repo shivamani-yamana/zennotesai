@@ -18,12 +18,15 @@ function FollowPointerCursor({
   };
 }) {
   return (
-    <FollowPointer
-      title={<TitleComponent title={info.name} avatar={info.avatar} />}
-      x={x}
-      y={y}
-      color={stringToColor(info.email)}
-    ></FollowPointer>
+    x != 0 &&
+    y != 0 && (
+      <FollowPointer
+        title={<TitleComponent title={info.name} avatar={info.avatar} />}
+        x={x}
+        y={y}
+        color={stringToColor(info.email)}
+      ></FollowPointer>
+    )
   );
 }
 
@@ -34,13 +37,13 @@ const TitleComponent = ({
   title: string;
   avatar: string;
 }) => (
-  <div className="flex space-x-2 items-center">
+  <div className="flex items-center space-x-2">
     <Image
       src={avatar}
       height="20"
       width="20"
       alt="thumbnail"
-      className="rounded-full border-2 border-white"
+      className="border-2 border-white rounded-full"
     />
     <p>{title}</p>
   </div>

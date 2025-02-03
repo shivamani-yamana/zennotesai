@@ -9,6 +9,13 @@ const config: Config = {
   ],
   theme: {
   	extend: {
+		backgroundImage:{
+			"landing-bg": "url('/images/landing-bg.png')"
+		},
+		fontFamily: {
+			"tt-travels": ["tt-travels-next", "sans-serif"],
+			"tt-travels-outline": ["tt-travels-next-outline", "sans-serif"],
+		  },
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
