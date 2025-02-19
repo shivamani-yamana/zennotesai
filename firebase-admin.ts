@@ -1,16 +1,17 @@
 import { credential, ServiceAccount } from "firebase-admin";
 import { App, getApp, getApps, initializeApp } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
-import serviceKey from "./service_key.json";
 
 let adminApp: App;
-
-
 
 // Check if Firebase app is already initialized, otherwise initialize
 if (!getApps().length) {
   adminApp = initializeApp({
-    credential: credential.cert(serviceKey as ServiceAccount),
+    credential: credential.cert({
+      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+      privateKey: process.env.FIREBASE_PRIVATE_KEY,
+      projectId: process.env.FIREBASE_PROJECT_ID,
+    }),
   });
 } else {
   adminApp = getApp();
