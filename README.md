@@ -69,6 +69,6 @@ The easiest way to deploy your Next.js app is to use [Vercel](https://vercel.com
 
 ## Contact
 
-If you have any questions or would like to discuss potential opportunities, please feel free to reach out to me at [your-email@example.com].
+If you have any questions or would like to discuss potential opportunities, please feel free to reach out to me at [shivamaniyamana2003@gmail.com].
 
 Thank you for checking out ZenNotes AI!
