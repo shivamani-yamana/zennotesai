@@ -25,7 +25,19 @@ To get started with the development server, follow these steps:
    bun install
    ```
 
-3. Run the development server:
+3. Create a `.env.local` file in the root directory and add the following fields:
+
+   ```
+   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+   CLERK_SECRET_KEY=
+   NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY=
+   LIVEBLOCKS_SECRET_KEY=
+   FIREBASE_PROJECT_ID=
+   FIREBASE_PRIVATE_KEY=
+   FIREBASE_CLIENT_EMAIL=
+   ```
+
+4. Run the development server:
    ```bash
    npm run dev
    # or
@@ -40,12 +52,20 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Features
+## Features Checklist
 
-- **AI-Powered Note Organization**: Automatically categorize and tag your notes using AI.
-- **Real-Time Collaboration**: Share and collaborate on notes with others in real-time.
-- **Rich Text Editing**: Create notes with rich text formatting, images, and more.
-- **Search and Filter**: Quickly find notes using advanced search and filtering options.
+### Implemented Features ✅
+- [x] **Real-Time Collaboration**: Share and collaborate on notes with others in real-time.
+- [x] **Live Cursors**: See live cursors while your team makes changes.
+- [x] **Rich Text Editing**: Create notes with rich text formatting, images, and more.
+
+### Pending Features ❌
+- [ ] **Landing Page**: More detailed and enhanced landing page.
+- [ ] **Skeleton Animations**: Skeleton loading animations.
+- [ ] **Search and Filter**: Quickly find notes using advanced search and filtering options.
+- [ ] **AI-Powered Note Organization**: Automatically categorize and tag your notes using AI.
+- [ ] **AI-Based Summarization**: Generate concise summaries of long notes using AI.
+- [ ] **AI-Powered Note Suggestions**: Get recommendations based on existing notes.
 
 ## Technologies Used
 
@@ -72,3 +92,4 @@ The easiest way to deploy your Next.js app is to use [Vercel](https://vercel.com
 If you have any questions or would like to discuss potential opportunities, please feel free to reach out to me at [shivamaniyamana2003@gmail.com].
 
 Thank you for checking out ZenNotes AI!
+
