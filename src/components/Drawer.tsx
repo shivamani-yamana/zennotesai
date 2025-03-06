@@ -65,7 +65,7 @@ export function Drawer({ children }: { children: React.ReactNode }) {
   return (
     <div
       className={cn(
-        "rounded-md flex flex-col md:flex-row bg-gray-100 dark:bg-slate-800 flex-1 w-full border border-slate-200 dark:border-slate-700",
+        "rounded-md flex flex-col md:flex-row bg-gray-100 dark:bg-zinc-950 flex-1 w-full border border-slate-200 dark:border-zinc-700",
         "h-full max-h-full"
       )}
     >

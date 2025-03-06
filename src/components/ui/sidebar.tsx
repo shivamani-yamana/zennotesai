@@ -95,7 +95,7 @@ export const DesktopSidebar = ({
     <>
       <motion.div
         className={cn(
-          "h-full px-4 py-4 hidden  md:flex md:flex-col bg-neutral-100 dark:bg-neutral-800 w-[300px] flex-shrink-0",
+          "h-full px-4 py-4 hidden  md:flex md:flex-col bg-neutral-100 dark:bg-neutral-950 w-[300px] flex-shrink-0",
           className
         )}
         animate={{
@@ -107,7 +107,7 @@ export const DesktopSidebar = ({
           <div
             onClick={() => {
               setOpen(!open);
-              console.log("clicked", open);
+              // console.log("clicked", open);
             }}
             className="self-end cursor-pointer"
           >
@@ -130,7 +130,7 @@ export const MobileSidebar = ({
     <>
       <div
         className={cn(
-          "h-10 px-4 py-4 flex flex-row md:hidden  items-center justify-between bg-neutral-100 dark:bg-neutral-800 w-full"
+          "h-10 px-4 py-4 flex flex-row md:hidden  items-center justify-between bg-neutral-100 dark:bg-neutral-950 w-full"
         )}
         {...props}
       >
@@ -151,14 +151,14 @@ export const MobileSidebar = ({
                 ease: "easeInOut",
               }}
               className={cn(
-                "fixed h-full w-full inset-0 bg-white dark:bg-neutral-900 p-10 z-[100] flex flex-col justify-between",
+                "fixed h-full w-full inset-0 bg-white dark:bg-neutral-950 p-10 z-[100] flex flex-col justify-between",
                 className
               )}
             >
               <div
                 onClick={() => {
                   setOpen(!open);
-                  console.log("clicked", open);
+                  // console.log("clicked", open);
                 }}
                 className="self-end cursor-pointer"
               >

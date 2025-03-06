@@ -14,7 +14,7 @@ export default async function checkEmail(req:NextApiRequest,res:NextApiResponse)
         const response = await clerkClient.users.getUserList();
         const userExists = response.data.some((user)=>user.emailAddresses.some((emailAddress)=>emailAddress.emailAddress === email));
 
-        if(userExists) return res.status(200).json({message:"User exzists"});
+        if(userExists) return res.status(200).json({message:"User exists"});
         else return res.status(404).json({message:"Email not found"});
     }
     catch(error){

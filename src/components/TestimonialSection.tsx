@@ -21,9 +21,9 @@ const testimonials = [
   },
   {
     id: 3,
-    text: "The team's professionalism and expertise exceeded our expectations.",
-    name: "Sophia Martinez",
-    position: "CTO, NextGen Tech",
+    text: "It's unbelievable how smooth an online block-note editor can be.",
+    name: "Sudarshan Rao",
+    position: "UI/UX Dev, PCBCupid",
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR81iX4Mo49Z3oCPSx-GtgiMAkdDop2uVmVvw&s",
   },

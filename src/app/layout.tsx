@@ -4,8 +4,9 @@ import { ClerkProvider } from "@clerk/nextjs";
 import React from "react";
 import { Toaster } from "../components/ui/toast";
 import Head from "next/head";
-import DevelopmentBanner from "@/components/DevelopmentBanner";
+// import DevelopmentBanner from "@/components/DevelopmentBanner";
 import { Analytics } from "@vercel/analytics/react";
+import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = {
   title: "ZenNotes AI",
@@ -22,13 +23,23 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className="">
-          <Head>
-            <link rel="stylesheet" href="https://use.typekit.net/qyw4zbq.css" />
-          </Head>
-          <DevelopmentBanner />
-          {children}
-          <Toaster />
-          <Analytics />
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Head>
+              <link
+                rel="stylesheet"
+                href="https://use.typekit.net/qyw4zbq.css"
+              />
+            </Head>
+            {/* <DevelopmentBanner /> */}
+            {children}
+            <Toaster />
+            <Analytics />
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
