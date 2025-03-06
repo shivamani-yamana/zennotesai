@@ -2,16 +2,13 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-// import { motion } from "framer-motion";
-import { IconBrandGithub } from "@tabler/icons-react";
-import Link from "next/link";
 
 export function FeaturesSection() {
   const features = [
     {
       title: "Seamless Collaboration",
       description:
-        "Work together in real-time with instant updates and live cursors. See your team&apos;s edits as they happen—no delays, no confusion, just seamless teamwork.",
+        "Work together in real-time with instant updates and live cursors. See your team's edits as they happen—no delays, no confusion, just seamless teamwork.",
       skeleton: <SkeletonOne />,
       className:
         "col-span-1 lg:col-span-4 border-b lg:border-r dark:border-neutral-800",
@@ -26,7 +23,7 @@ export function FeaturesSection() {
     {
       title: "Built on top tech.",
       description:
-        "ZenNotes AI is powered by Next.js, Liveblocks, and Firestore, ensuring lightning-fast performance, real-time updates, and robust scalability for any project.",
+        "ZenNotes AI is powered by Next.js and Firestore, ensuring lightning-fast performance, real-time updates, and robust scalability for any project.",
       skeleton: <SkeletonThree />,
       className:
         "col-span-1 lg:col-span-3 lg:border-r  dark:border-neutral-800",
@@ -79,10 +76,10 @@ const FeatureCard = ({
   return (
     <div
       className={cn(
-        `p-4 sm:p-8 relative overflow-hidden rounded-md bg-clip-padding backdrop-filter backdrop-blur-3xl`,
+        `p-4 sm:p-8 relative overflow-hidden rounded-md bg-clip-padding backdrop-filter backdrop-blur-3xl bg-white dark:bg-black`,
         className
       )}
-      style={{ backgroundColor: "rgba(252, 252, 252, 0.4)" }}
+      // style={{ backgroundColor: "rgba(252, 252, 252, 0.4)" }}
     >
       {children}
     </div>
@@ -135,25 +132,21 @@ export const SkeletonOne = () => {
 
 export const SkeletonThree = () => {
   return (
-    <Link
-      href="https://github.com"
-      target="__blank"
-      className="relative flex gap-10 h-72 group/image"
-    >
+    <div className="relative flex gap-10 h-72 group/image">
       <div className="flex w-full h-full mx-auto bg-transparent dark:bg-transparent group">
         <div className="relative flex flex-col flex-1 w-full h-full space-y-2">
           {/* TODO */}
-          <IconBrandGithub className="absolute inset-0 z-10 w-20 h-20 m-auto text-white opacity-0 group-hover:opacity-100" />
+          {/* <IconBrandGithub className="absolute inset-0 z-10 w-20 h-20 m-auto text-white opacity-0 group-hover:opacity-100" /> */}
           <Image
             src="/images/lp-ss-1.png"
             alt="header"
             width={1920}
             height={1920}
-            className="object-cover object-center w-full h-full transition-all duration-200 rounded-sm aspect-square blur-none group-hover/image:blur-md"
+            className="object-cover object-center w-full h-full transition-all duration-200 rounded-sm aspect-square blur-none group-hover/image:scale-105"
           />
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

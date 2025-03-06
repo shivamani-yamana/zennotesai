@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -22,17 +21,6 @@ const components: { title: string; href: string; description: string }[] = [
 ];
 
 export function NavItems({ mobile = false }: { mobile?: boolean }) {
-  const lenis = useLenis();
-
-  const handleScroll = (
-    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-    target: string
-  ) => {
-    e.preventDefault();
-    if (lenis) {
-      lenis.scrollTo(target, { offset: -50, duration: 1.2 }); // Adjust offset if needed
-    }
-  };
   return (
     <NavigationMenu>
       <NavigationMenuList
@@ -47,7 +35,7 @@ export function NavItems({ mobile = false }: { mobile?: boolean }) {
               <li className="row-span-4">
                 <NavigationMenuLink asChild>
                   <a
-                    className="flex flex-col justify-end w-full h-full p-6 no-underline rounded-md outline-none select-none bg-landing-bg focus:shadow-md"
+                    className="flex flex-col justify-end w-full h-full p-6 no-underline rounded-md outline-none select-none bg-landing-bg dark:bg-landing-bg-dark focus:shadow-md"
                     href="#"
                   >
                     <div className="mt-4 mb-2 text-lg font-medium">
@@ -74,8 +62,8 @@ export function NavItems({ mobile = false }: { mobile?: boolean }) {
                 productivity with AI-driven insights.
               </ListItem>
               <ListItem href="#features" title="Built for Speed">
-                Powered by Next.js, Liveblocks, and Firestore, ZenNotes AI
-                delivers a lightning-fast, scalable experience.
+                Powered by Next.js and Firestore, ZenNotes AI delivers a
+                lightning-fast, scalable experience.
               </ListItem>
             </ul>
           </NavigationMenuContent>
@@ -97,7 +85,7 @@ export function NavItems({ mobile = false }: { mobile?: boolean }) {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link
+          {/* <Link
             href="#testimonials"
             legacyBehavior
             passHref
@@ -107,7 +95,15 @@ export function NavItems({ mobile = false }: { mobile?: boolean }) {
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Testimonials
             </NavigationMenuLink>
-          </Link>
+          </Link> */}
+          <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            <ListItem
+              key={"Testimonials"}
+              title={"Testimonials"}
+              href={"#testimonials"}
+              className="bg-opacity-0"
+            ></ListItem>
+          </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
@@ -134,7 +130,7 @@ const ListItem = React.forwardRef<
       <NavigationMenuLink asChild>
         <a
           onClick={(e) => handleScroll(e, props.href || "#")}
-          className="block p-3 space-y-1 leading-none no-underline transition-colors rounded-md outline-none select-none hover:bg-landing-bg hover:text-accent-foreground"
+          className="block p-3 space-y-1 leading-none no-underline transition-colors rounded-md outline-none select-none hover:bg-landing-bg hover:dark:bg-landing-bg-dark hover:text-accent-foreground"
           {...props}
         >
           <div className="text-sm font-medium leading-none">{title}</div>

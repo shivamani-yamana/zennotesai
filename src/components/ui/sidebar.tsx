@@ -199,8 +199,8 @@ export const SidebarLink = ({
       href={link.href}
       className={cn(
         `flex items-center ${
-          isActive ? "dark:bg-neutral-700 bg-neutral-200" : ""
-        } justify-start gap-1  group/sidebar px-2 py-1 hover:dark:bg-neutral-700 hover:bg-neutral-200 rounded-md duration-500 transition-all ease-in-out cursor-pointer`,
+          isActive ? "dark:bg-purple-950 bg-neutral-200" : ""
+        } justify-start gap-1  group/sidebar px-2 py-1 hover:dark:bg-purple-950 hover:bg-neutral-200 rounded-md duration-500 transition-all ease-in-out cursor-pointer`,
         className
       )}
       {...props}

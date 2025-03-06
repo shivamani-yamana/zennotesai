@@ -10,7 +10,8 @@ const config: Config = {
   theme: {
   	extend: {
 		backgroundImage:{
-			"landing-bg": "url('/images/landing-bg.png')"
+			"landing-bg": "url('/images/landing-bg.png')",
+			"landing-bg-dark": "url('/images/landing-bg-dark.png')"
 		},
 		fontFamily: {
 			"tt-travels": ["tt-travels-next", "sans-serif"],
