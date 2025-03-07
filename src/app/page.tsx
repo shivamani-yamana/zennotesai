@@ -10,7 +10,7 @@ export default function Home() {
   useLenis();
   return (
     <>
-      <div className="w-full min-h-screen flex flex-col bg-cover bg-landing-bg">
+      <div className="w-full min-h-screen flex flex-col bg-cover bg-landing-bg dark:bg-landing-bg-dark">
         {/* Sticky Navbar */}
         <div className="top-0 sticky z-50 w-full">
           <LandingPageNavbar />
@@ -29,9 +29,12 @@ export default function Home() {
         </div>
 
         {/* Footer */}
-        <p className="text-sm text-gray-500 dark:text-gray-400 my-6 w-full text-center px-6 md:px-12">
-          &copy; {new Date().getFullYear()} ZenNotes AI. All rights reserved.
-        </p>
+        <div className="pb-6">
+          <p className="text-sm text-gray-500 dark:text-gray-400 w-full text-center">
+            Made with ❤️ by Nemo &copy; {new Date().getFullYear()} ZenNotes AI.
+            All rights reserved.
+          </p>
+        </div>
       </div>
     </>
   );

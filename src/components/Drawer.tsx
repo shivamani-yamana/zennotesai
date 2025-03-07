@@ -65,7 +65,7 @@ export function Drawer({ children }: { children: React.ReactNode }) {
   return (
     <div
       className={cn(
-        "rounded-md flex flex-col md:flex-row bg-gray-100 dark:bg-zinc-950 flex-1 w-full border border-slate-200 dark:border-zinc-700",
+        "rounded-md flex flex-col md:flex-row bg-gray-100 dark:bg-black flex-1 w-full border border-slate-200 dark:border-purple-800",
         "h-full max-h-full"
       )}
     >
@@ -86,12 +86,12 @@ export function Drawer({ children }: { children: React.ReactNode }) {
 
                       <div>
                         {groupedData.owner.length === 0 ? (
-                          <h4 className="w-full hover:dark:bg-neutral-700 hover:bg-neutral-200 text-xs px-2 py-1 my-3 rounded-md duration-500 transition-all ease-in-out cursor-pointer">
+                          <h4 className="w-full hover:dark:bg-purple-950 hover:bg-neutral-200 text-xs px-2 py-1 my-3 rounded-md duration-500 transition-all ease-in-out cursor-pointer">
                             {!open ? "No Documents found!" : ""}
                           </h4>
                         ) : (
                           <div>
-                            <h4 className="w-full hover:dark:bg-neutral-700 hover:bg-neutral-200 text-xs px-2 py-1 my-1 rounded-md duration-500 transition-all ease-in-out cursor-pointer">
+                            <h4 className="w-full hover:dark:bg-purple-950 hover:bg-neutral-200 text-xs px-2 py-1 my-1 rounded-md duration-500 transition-all ease-in-out cursor-pointer">
                               My Documents
                             </h4>
                             <div className="flex flex-col gap-1">
@@ -121,12 +121,12 @@ export function Drawer({ children }: { children: React.ReactNode }) {
                       {/* My Shared Section */}
                       <div>
                         {groupedData.editor.length === 0 ? (
-                          <h4 className="w-full hover:dark:bg-neutral-700 hover:bg-neutral-200 text-xs px-2 py-1 my-3 rounded-md duration-500 transition-all ease-in-out cursor-pointer">
+                          <h4 className="w-full hover:dark:bg-purple-950 hover:bg-neutral-200 text-xs px-2 py-1 my-3 rounded-md duration-500 transition-all ease-in-out cursor-pointer">
                             {open ? "No Documents found!" : ""}
                           </h4>
                         ) : (
                           <div>
-                            <h4 className="w-full hover:dark:bg-neutral-700 hover:bg-neutral-200 text-xs px-2 py-1 my-1 rounded-md duration-500 transition-all ease-in-out cursor-pointer">
+                            <h4 className="w-full hover:dark:bg-purple-950 hover:bg-neutral-200 text-xs px-2 py-1 my-1 rounded-md duration-500 transition-all ease-in-out cursor-pointer">
                               Shared Documents
                             </h4>
 
@@ -160,7 +160,7 @@ export function Drawer({ children }: { children: React.ReactNode }) {
           </div>
         </SidebarBody>
       </Sidebar>
-      <div className="w-full pt-4 bg-slate-50">{children}</div>
+      <div className="w-full pt-4 dark:bg-slate-950">{children}</div>
     </div>
   );
 }
